@@ -1,6 +1,6 @@
 import unittest
 
-from break_a_palindrome_1328_medium import Solution
+from tasks.break_a_palindrome_1328_medium import Solution
 
 
 class TestSolution(unittest.TestCase):
