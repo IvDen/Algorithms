@@ -1,6 +1,6 @@
 import unittest
 
-from tasks.increasing_triplet_subsequence_334_medium import Solution
+from LeetCode.tasks.increasing_triplet_subsequence_334_medium import Solution
 
 
 class TestSolution(unittest.TestCase):
