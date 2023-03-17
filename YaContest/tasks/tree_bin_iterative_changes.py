@@ -22,6 +22,8 @@ def get_child_val(parent: int) -> (int, int):
 
 
 def get_parent_val(child_val: int) -> (int, int):
+    if child_val == 1:
+        return 1, 0
     if child_val % 2 == 0:
         return int(child_val / 2), 0
     else:
@@ -54,22 +56,34 @@ def tree_bin_iterative_changes(data: str) -> str:
     for node_to_change in operations:
         if tree_n[node_to_change].parent is None:
             continue
-        cur_val = node_to_change
-        parent_val = get_parent_val(cur_val)[0]
-        grandpa_val = get_parent_val(parent_val)[0]
+        # cur_val = node_to_change
+        # parent_val = get_parent_val(cur_val)[0]
+        # grandpa_val = get_parent_val(parent_val)[0]
 
-        current = tree_n[cur_val]
-        cur_parent = tree_n[parent_val]
-        cur_grandpa = tree_n[grandpa_val]
+        current = tree_n[node_to_change]
+        # cur_parent = tree_n[parent_val]
+        # cur_grandpa = tree_n[grandpa_val]
 
-        # if current.is_left:
-        #     current.rchild, cur_parent.rchild = cur_parent.rchild, current.rchild
-        # else:
-        #     current.lchild, cur_parent.lchild = cur_parent.lchild, current.lchild
+        # new_current = Node(val=cur_parent.val)
+        # new_cur_parrent = Node(val=)
+        if current.is_left:
+            temp = current.rchild
+            current.rchild = current
+            current.parent.rchild = temp
 
-        cur_parent.parent = current
-        current.parent = cur_grandpa
+        else:
+            temp = current.lchild
+            current.lchild = current
+            current.parent.lchild = temp
 
+        temp = current.parent
+        current.parent = current.parent.parent
+        temp.parent = current
+        # if current.parent.parent is not None:
+        #     if current.parent
+
+        # cur_parent.parent = current
+        # current.parent = cur_grandpa
 
     result_str = ''
 
@@ -78,4 +92,3 @@ def tree_bin_iterative_changes(data: str) -> str:
 '''
 '7 10 5 2 8 4 9 1 6 3 \n'
 '''
-
